@@ -14,7 +14,7 @@
 
     @forelse ($tasks as $task)
         <div class="card border-dark mb-3" style="max-width: 18rem;">
-            <h4 class="card-header"><b>{{ $task->title }}</b></h4>
+            <h4 class="card-header"><b><a href="{{ route('tasks.show', ['id'=> $task->id]) }}">{{ $task->title }}</a></b></h4>
             <div class="card-body">
                 <h5 class="card-title">{{ $task->description }}</h5>
                 <p class="card-text">{{ $task->long_description }}</p>
