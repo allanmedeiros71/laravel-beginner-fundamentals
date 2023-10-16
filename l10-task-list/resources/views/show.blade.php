@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('title', $task->title)
+@section('title', 'Task #'.$task->id)
 
 @section('content')
-    <div class="card border-dark mb-3" style="max-width: 18rem;">
+    <div class="card border-dark w-50" >
         <h4 class="card-header"><b>{{ $task->title }}</b></h4>
         <div class="card-body">
             <h5 class="card-title">{{ $task->description }}</h5>
