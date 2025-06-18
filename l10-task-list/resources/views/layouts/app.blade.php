@@ -8,14 +8,20 @@
     @yield('styles')
   </head>
   <body>
-    <H1>@yield('title')</H1>
-    <div>
-        @if (session()->has('success'))
-            <div>{{ session('success') }}</div>
-        @endif
-        @yield('content')
+    <!-- Center the content of the page -->
+    <div class="container" style="width: 50%;">
+        <h1  style="margin-bottom: 20px; margin-top: 20px;">@yield('title')</h1>
+        <div>
+            @if (session()->has('success'))
+            <!-- Show success message using flash message -->
+                <div class="alert alert-success alert-dismissible fade show" role="alert" style="width: 100%;">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+            @yield('content')
+        </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/086c04e082.js" crossorigin="anonymous"></script>
   </body>

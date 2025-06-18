@@ -3,7 +3,7 @@
 @section('title', 'Task #'.$task->id)
 
 @section('content')
-    <div class="card border-dark w-50" >
+    <div class="card border-dark w-100" >
         <h4 class="card-header"><b>{{ $task->title }}</b></h4>
         <div class="card-body">
             <h5 class="card-title">{{ $task->description }}</h5>
