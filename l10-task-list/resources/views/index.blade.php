@@ -14,8 +14,8 @@
             <li class="list-group-item w-100">
                 <div class="d-flex align-items-left align-items-center">
                     <div class="btn-group" role="group" aria-label="toolbar">
-                        <a href="{{ route('tasks.show', ['id'=> $task->id]) }}" class="btn btn-light"><i class="fas fa-eye"></i></a>
-                        <a href="{{ route('tasks.edit', ['id'=> $task->id]) }}" class="btn btn-light"><i class="fas fa-edit"></i></a>
+                        <a href="{{ route('tasks.show', ['task'=> $task->id]) }}" class="btn btn-light"><i class="fas fa-eye"></i></a>
+                        <a href="{{ route('tasks.edit', ['task'=> $task->id]) }}" class="btn btn-light"><i class="fas fa-edit"></i></a>
                     </div>
                     <div style="margin-left: 10px">
                         {{ $task->title }}
