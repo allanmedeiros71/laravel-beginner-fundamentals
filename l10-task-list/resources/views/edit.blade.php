@@ -37,8 +37,15 @@
                 <p class="error-message"> {{ $message }} </p>
             @enderror
         </div>
-        <div>
-            <button type="submit">Update Task </button>
+        <br>
+        <div class="d-flex" style="justify-content: flex-end;">
+            <button type="submit" class="btn btn-primary" style="margin-right: 10px;">Update</button>
+            <form style="display:inline; margin-right: 10px;" action="{{ route('tasks.destroy', ['task' => $task->id]) }}" method="post">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger" style="margin-right: 10px;">Delete</button>
+            </form>
+            <a href="{{ route('tasks.index') }}" class="btn btn-secondary" style="margin-right: 10px;">Back</a>
         </div>
     </form>
 @endsection
