@@ -14,4 +14,13 @@ class Task extends Model
         'description',
         'long_description'
     ];
+
+    public function toggleComplete()
+    {
+        logger('Toggle complete called');
+        logger($this->completed);
+        $this->completed = !$this->completed;
+        $this->save();
+        logger($this->completed);
+    }
 }

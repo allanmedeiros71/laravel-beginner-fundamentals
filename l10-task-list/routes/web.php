@@ -66,6 +66,11 @@ Route::delete('/tasks/{task}', function(Task $task){
     return redirect()->route('tasks.index')->with('success', 'Task deleted Successfully');
 })->name('tasks.destroy');
 
+Route::patch('/tasks/{task}/toggle-completed', function(Task $task){
+    $task->toggleComplete();
+    return redirect()->back()->with('success', 'Task toggled Successfully');
+})->name('tasks.toggle-completed');
+
 // Route::get('/hello', function () {
 //     return 'Hello';
 // })->name('hello');

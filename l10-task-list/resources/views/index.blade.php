@@ -14,11 +14,25 @@
             <li class="list-group-item w-100">
                 <div class="d-flex align-items-left align-items-center">
                     <div class="btn-group" role="group" aria-label="toolbar">
-                        <a href="{{ route('tasks.show', ['task'=> $task->id]) }}" class="btn btn-light"><i class="fas fa-eye"></i></a>
-                        <a href="{{ route('tasks.edit', ['task'=> $task->id]) }}" class="btn btn-light"><i class="fas fa-edit"></i></a>
+                        <a href="{{ route('tasks.show', ['task'=> $task]) }}" class="btn btn-light"><i class="fas fa-eye"></i></a>
+                        <a href="{{ route('tasks.edit', ['task'=> $task]) }}" class="btn btn-light"><i class="fas fa-edit"></i></a>
+                        <form action="{{ route('tasks.destroy', ['task'=> $task]) }}" method="post" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-light"><i class="fas fa-trash"></i></button>
+                        </form>
+                        <form action="{{ route('tasks.toggle-completed', ['task'=> $task]) }}" method="post" style="display:inline;">
+                            @csrf
+                            @method('PATCH')
+                            <button type="submit" class="btn btn-light"><i class="{{ $task->completed ? 'fas fa-toggle-on' : 'fas fa-toggle-off' }}"></i></button>
+                        </form>
                     </div>
                     <div style="margin-left: 10px">
-                        {{ $task->title }}
+                        @if ($task->completed)
+                            <s>{{ $task->title }}</s>
+                        @else
+                            {{ $task->title }}
+                        @endif
                     </div>
                 </div>
             </li>

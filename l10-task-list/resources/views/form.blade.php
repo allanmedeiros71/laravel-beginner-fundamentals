@@ -39,6 +39,9 @@
         <p class="error-message"> {{ $message }} </p>
         @enderror
     </div>
+    <div>
+        <label for="completed" class="form-label">{{ $task->completed ? 'Completed' : 'Not Completed' }}</label> <i class="{{ $task->completed ? 'fas fa-toggle-on' : 'fas fa-toggle-off' }}"></i>
+    </div>
     <br>
     <div class="d-flex" style="justify-content: flex-end; margin-top: 10px; gap: 10px;">
         <button type="submit" class="btn btn-primary" style="margin-right: 10px;">{{ isset($task) ? 'Update' : 'Add' }}</button>

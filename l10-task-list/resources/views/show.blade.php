@@ -15,6 +15,18 @@
         <small class="text-body-secondary">Created at {{ $task->created_at }} </small><br>
         <small class="text-body-secondary">Updated at {{ $task->updated_at }} </small>
     </div>
+    <div class="card-footer">
+        @if ($task->completed)
+            <small class="text-body-secondary">Completed at {{ $task->updated_at }} </small>
+        @else
+            <small class="text-body-secondary">Not completed</small>
+        @endif
+        <form action="{{ route('tasks.toggle-completed', ['task' => $task->id]) }}" method="post" style="display:inline;">
+            @csrf
+            @method('PATCH')
+            <button type="submit" class="btn btn-light"><i class="{{ $task->completed ? 'fas fa-toggle-on' : 'fas fa-toggle-off' }}"></i></button>
+        </form>
+    </div>
 </div>
 <br>
 <!-- Align buttons horizontally on the right -->
