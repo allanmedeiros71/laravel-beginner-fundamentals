@@ -15,7 +15,7 @@
 @endsection
 
 @section('content')
-<form action="{{ isset($task) ? route('tasks.update', ['task'=> $task->id]) : route('tasks.store') }}" method="post">
+<form id="task-form" action="{{ isset($task) ? route('tasks.update', ['task'=> $task->id]) : route('tasks.store') }}" method="post">
     @csrf
     @method(isset($task) ? 'PUT' : 'POST')
     <div>
@@ -42,15 +42,15 @@
     <div>
         <label for="completed" class="form-label">{{ $task->completed ? 'Completed' : 'Not Completed' }}</label> <i class="{{ $task->completed ? 'fas fa-toggle-on' : 'fas fa-toggle-off' }}"></i>
     </div>
+</form> 
     <br>
     <div class="d-flex" style="justify-content: flex-end; margin-top: 10px; gap: 10px;">
-        <button type="submit" class="btn btn-primary" style="margin-right: 10px;">{{ isset($task) ? 'Update' : 'Add' }}</button>
-    </form> 
+        <button type="submit" form="task-form" class="btn btn-primary" style="margin-right: 10px;">{{ isset($task) ? 'Update' : 'Add' }}</button>
         @if(isset($task))
-            <form action="{{ route('tasks.destroy', ['task' => $task->id]) }}" method="post" style="display:inline;">
+            <form id="delete-form" action="{{ route('tasks.destroy', ['task' => $task->id]) }}" method="post" style="display:inline;">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger" style="margin-right: 10px;">Delete</button>
+                <button type="submit" form="delete-form" class="btn btn-danger" style="margin-right: 10px;">Delete</button>
             </form>
         @endif
         <a href="{{ route('tasks.index') }}" class="btn btn-secondary" style="margin-right: 10px;">Back</a>
